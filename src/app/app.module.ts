@@ -11,6 +11,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormEmployeeComponent } from './components/employees/components/form-employee/form-employee.component';
 import { FormSkillComponent } from './components/skills/components/form-skill/form-skill.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SkillsListComponent } from './components/skills-list/skills-list.component';
+import { SkillsDetailComponent } from './components/skills-detail/skills-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AppRoutingModule } from './app-routing.module';
     SkillsComponent,
     FooterComponent,
     FormEmployeeComponent,
-    FormSkillComponent
+    FormSkillComponent,
+    SkillsListComponent,
+    SkillsDetailComponent
   ],
   imports: [
     BrowserModule,
