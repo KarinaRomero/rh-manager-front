@@ -4,23 +4,10 @@ import { RouterModule, Routes }  from '@angular/router';
 
 import { EmployeesComponent } from './components/employees/employees.component';
 
-import { SkillsComponent } from './components/skills/skills.component';
-
 const appRoutes: Routes = [
   {
     path: 'employees',
     component: EmployeesComponent
-  },
-  {
-    path: 'skills',
-    component: SkillsComponent/*,
-     children: [
-      {
-        path: 'skills-add',
-        component: FormSkillComponent
-      }
-
-    ]*/
   },
   {
     path: '',
@@ -40,6 +27,8 @@ const appRoutes: Routes = [
   exports: [
     RouterModule
   ],
-  declarations: []
+  declarations: [
+    EmployeesComponent
+  ]
 })
 export class AppRoutingModule { }
