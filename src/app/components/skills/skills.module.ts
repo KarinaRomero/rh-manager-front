@@ -6,6 +6,8 @@ import { SkillsRoutingModule } from './skills-routing.module';
 import { SkillsListComponent } from './skills-list/skills-list.component';
 import { SkillsDetailComponent } from './skills-detail/skills-detail.component';
 
+import {SkillService} from './services/skills.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +16,9 @@ import { SkillsDetailComponent } from './skills-detail/skills-detail.component';
   declarations: [
     SkillsListComponent,
     SkillsDetailComponent
+  ],
+  providers: [
+    SkillService
   ]
 })
 export class SkillsModule { }
