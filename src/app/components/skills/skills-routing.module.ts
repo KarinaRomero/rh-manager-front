@@ -7,10 +7,10 @@ import { SkillsDetailComponent } from './skills-detail/skills-detail.component';
 const routes: Routes = [
   { path: 'skills', redirectTo: '/skills-all' },
   { path: 'skills-add', redirectTo: '/skills-new' },
-  { path: 'skill/:id', redirectTo: '/skill-update/:id' },
+  { path: 'skills-update/id', redirectTo: '/skills-new/:id' },
   { path: 'skills-all',  component: SkillsListComponent },
   { path: 'skills-new',  component: SkillsDetailComponent },
-  { path: 'skill-update/:id', component: SkillsDetailComponent }
+  { path: 'skills-new/:id', component: SkillsDetailComponent }
 ];
 
 @NgModule({

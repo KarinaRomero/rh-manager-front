@@ -2,17 +2,7 @@
     <div class="row">
       <div class="col-sm-2"></div>
       <div class="col-sm-8">
-        <form>
-          <div class="form-group">
-            <label for="inputID">Clave</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputID"
-              placeholder="1234PKÑ"
-              disabled
-            />
-          </div>
+        <form (ngSubmit)="onSubmit()" #skillsForm="ngForm">
           <div class="form-group">
             <label for="inputName">Conocimiento</label>
             <input
@@ -20,10 +10,12 @@
               class="form-control"
               id="inputName"
               placeholder="Liderazgo"
+              [(ngModel)] = "skill.name" name = "skillName" required
+              #name="ngModel"
             />
           </div>
-          <button type="submit" class="btn btn-primary">Agregar</button>
-          <button type="submit" class="btn btn-secondary">Cancelar</button>
+          <input type="submit" class="btn btn-primary" value="Agregar"/>
+          <button class='btn btn-secondary btn-aling' routerLink="/skills">Cancelar</button>
         </form>
       </div>
       <div class="col-sm-2"></div>

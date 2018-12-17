@@ -11,6 +11,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SkillsModule } from './components/skills/skills.module';
 
+import { EmployeeService } from './components/employees/components/services/employees.service';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,9 +25,12 @@ import { SkillsModule } from './components/skills/skills.module';
     BrowserModule,
     AppRoutingModule,
     SkillsModule,
+    FormsModule,
     HttpClientModule
   ],
+  exports:[FormsModule],
   providers: [
+    EmployeeService
   ],
   bootstrap: [AppComponent]
 })

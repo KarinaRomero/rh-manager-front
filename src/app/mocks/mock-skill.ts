@@ -1,6 +1,6 @@
 import { Skill } from '../models/skill';
 
-export const SKILLS: Skill[] = [
+/*export const SKILLS: Skill[] = [
   { id: 11, name: 'Mr. Nice' },
   { id: 12, name: 'Narco' },
   { id: 13, name: 'Bombasto' },
@@ -11,4 +11,4 @@ export const SKILLS: Skill[] = [
   { id: 18, name: 'Dr IQ' },
   { id: 19, name: 'Magma' },
   { id: 20, name: 'Tornado' }
-];
+];*/

@@ -8,10 +8,13 @@ import { SkillsDetailComponent } from './skills-detail/skills-detail.component';
 
 import {SkillService} from './services/skills.service';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
-    SkillsRoutingModule
+    SkillsRoutingModule,
+    FormsModule
   ],
   declarations: [
     SkillsListComponent,

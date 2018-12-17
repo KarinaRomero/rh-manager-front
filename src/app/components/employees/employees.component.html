@@ -1,4 +1,4 @@
-<div class = "container-fluid">
+<div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3 ">
       <h2>Empleados</h2>
@@ -7,15 +7,16 @@
   <div class="row content">
     <div class="col-sm-8"></div>
     <div class="col-sm-4">
-        <button class='btn btn-success btn-aling' routerLink="/employees-add">Registar empleado</button>
+      <button class='btn btn-success btn-aling' routerLink="/employees-add">Registar empleado</button>
     </div>
   </div>
 </div>
-<div class = "container">
+<div class="container">
   <div class="table-responsive-sm">
     <table class="table">
       <thead class="active">
         <tr class="active">
+          <th style="text-align: center">ID</th>
           <th style="text-align: center">Clave</th>
           <th style="text-align: center">Nombre</th>
           <th style="text-align: center">Edad</th>
@@ -27,18 +28,22 @@
         </tr>
       </thead>
       <tbody class="ContentTableEmpleado">
-        <tr>
-          <td style='text-align: center'>clprueba</td>
-          <td style='text-align: center'>Name</td>
-          <td style='text-align: center'>00</td>
-          <td style='text-align: center'>P1</td>
-          <td style='text-align: center'>ca.#00</td>
-          <td style='text-align: center'><button class='btn btn-link'>Conocimientos</button></td>
-          <td style='text-align: center'><button class='btn btn-link'>Detalle</button></td>
-          <td style='text-align: center'><button class='btn btn-danger'>Eliminar</button></td>
+        <tr *ngFor="let employee of employees">
+          <td style="text-align: center">{{employee.id}}</td>
+          <td style="text-align: center">{{employee.id_employee}}</td>
+          <td style="text-align: center">{{employee.name}}</td>
+          <td style="text-align: center">{{employee.age}}</td>
+          <td style="text-align: center">{{employee.job}}</td>
+          <td style="text-align: center">{{employee.adress}}</td>
+          <td style="text-align: center">2</td>
+          <td style="text-align: center">
+            <button class="btn btn-link" (click)="update(employee['id'])">Editar</button>
+          </td>
+          <td style="text-align: center">
+            <button class="btn btn-danger" (click)="delete(employee['id'])">Eliminar</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-
