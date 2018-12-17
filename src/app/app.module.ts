@@ -14,6 +14,7 @@ import { SkillsModule } from './components/skills/skills.module';
 import { EmployeeService } from './components/employees/components/services/employees.service';
 
 import { FormsModule } from '@angular/forms';
+import { LoginModule } from './components/login/login.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     SkillsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    LoginModule
   ],
   exports:[FormsModule],
   providers: [

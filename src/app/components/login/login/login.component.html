@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8 bg">
+        <form (ngSubmit)="onSubmit()" #skillsForm="ngForm" >
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              placeholder="example@mail.com"
+              [(ngModel)] = "user.name" name = "userlName" required
+              #name="ngModel"
+            />
+          </div>
+          <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword"
+                placeholder="*********"
+                [(ngModel)] = "use.password" name = "userPassword" required
+                #name="ngModel"
+              />
+            </div>
+          <input type="submit" class="btn btn-primary" value="Entrar"/>
+        </form>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>

@@ -6,7 +6,7 @@ export class Employee {
     job: string;
     adress: string;
 
-    Skill()
+    Employee()
     {
         this.id = 0;
         this.id_employee = '';

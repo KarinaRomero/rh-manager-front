@@ -1,0 +1,101 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 bg">
+      <h3>Registrar</h3>
+      <hr />
+      <form (ngSubmit)="onSubmit()" #employeesForm="ngForm">
+        <div class="form-group">
+          <label for="inputRFC">RFC</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputRFC"
+            placeholder="1234PKÑ"
+            [(ngModel)]="register.rfc"
+            name="id"
+            #name="ngModel"
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <label for="inputName">Nombre</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputName"
+              placeholder="Erika Maria Muñoz Rueda"
+              [(ngModel)]="register.name"
+              name="name"
+              required
+              #name="ngModel"
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputCompany">Compañia</label>
+            <input
+              type="text"
+              class="form-control"
+              id="inputCompany"
+              placeholder="Example S.A"
+              [(ngModel)]="register.company"
+              name="company"
+              required
+              #name="ngModel"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="inputEmail"
+            placeholder="example@mail.com"
+            [(ngModel)]="register.login.email"
+            name="email"
+            required
+            #name="ngModel"
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Contraseña</label>
+          <input
+            type="password"
+            class="form-control"
+            id="inputAddress"
+            placeholder="*******"
+            [(ngModel)]="register.login.password"
+            name="password"
+            required
+            #name="ngModel"
+          />
+        </div>
+        <div class="form-group">
+            <label for="inputPasswordC">Confirmar Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="inputPasswordC"
+              placeholder="********"
+              [(ngModel)]="password"
+              name="passwordC"
+              required
+              #name="ngModel"
+            />
+          </div>
+        <button type="submit" class="btn btn-primary btn-aling ">
+          Agregar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-secondary btn-aling "
+          routerLink="/employees"
+        >
+          Cancelar
+        </button>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
