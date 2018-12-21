@@ -1,5 +1,5 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core'
+import { AuthService } from 'src/app/services/auth.service'
 
 @Component({
   selector: 'app-registry',
@@ -7,38 +7,32 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./registry.component.css']
 })
 export class RegistryComponent implements OnInit {
+  @Output() onFormResult = new EventEmitter<any>()
 
-  @Output() onFormResult = new EventEmitter<any>();
-
-  confirmation = '^([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))([A-Z\d]{3})?$ /'
+  confirmation = /^[A-Z&Ñ]{3,4}[0-9]{2}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])[A-Z0-9]{2}[0-9A]$/i
   userLogin = {
+    rfc: '',
+    name: '',
+    company:'',
     email: '',
     password: '',
     passwordConfirmation: ''
-  };
-
-  constructor(private authSerivce:AuthService) {
-
   }
 
-  ngOnInit() {
+  constructor(private authSerivce: AuthService) {}
 
-  }
-  onSubmit(){
+  ngOnInit() {}
+  onSubmit() {
     this.authSerivce.registerUser(this.userLogin).subscribe(
-
-      (res) => {
-
+      res => {
         if (res.status === 200) {
-          this.onFormResult.emit({signedUp: true, res});
+          this.onFormResult.emit({ signedUp: true, res })
         }
-
       },
-
-      (err) => {
-        console.log(err.json());
-        this.onFormResult.emit({signedUp: false, err});
+      err => {
+        console.log(err.json())
+        this.onFormResult.emit({ signedUp: false, err })
       }
-  );
+    )
   }
 }

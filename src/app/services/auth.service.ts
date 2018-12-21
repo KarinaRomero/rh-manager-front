@@ -4,8 +4,6 @@ import { Response } from '@angular/http';
 import { Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
-
 @Injectable()
 export class AuthService {
 

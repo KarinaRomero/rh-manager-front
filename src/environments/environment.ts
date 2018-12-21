@@ -4,10 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:3000',
   token_auth_config: {
-    apiBase: 'http://localhost:3000',
-    production: false,
+    apiBase: 'http://your.url:PORT/',
+    registerAccountCallback:''
   },
 };
 

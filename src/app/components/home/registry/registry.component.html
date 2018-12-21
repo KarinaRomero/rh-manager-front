@@ -33,9 +33,9 @@
                   <div class="validate-text" *ngIf="rfc.errors.maxlength">
                       RFC debe tener menos de 14 caracteres.
                     </div>
-                    <div class="validate-text" *ngIf="rfc.errors.invalid">
+                    <div class="validate-text" *ngIf="rfc.invalid">
                         RFC debe tener una estructura correcta.
-                      </div>
+                    </div>
               </div>
           </div>
           <div class="form-row">
@@ -130,7 +130,7 @@
             required
             #password="ngModel"
             minlength="8"
-            maxlength="8"
+            maxlength="15"
             [ngClass]="{
               'validate-input': password.invalid && (password.dirty || password.touched)
             }"
@@ -140,10 +140,10 @@
                 Password es requerido.
               </div>
               <div class="validate-text" *ngIf="password.errors.minlength">
-                Password debe tener  8 caracteres.
+                Password debe tener mas de 8 caracteres.
               </div>
               <div class="validate-text" *ngIf="password.errors.maxlength">
-                  Password debe tener  8 caracteres.
+                  Password debe tener menos de 15 caracteres.
                 </div>
             </div>
           </div>
