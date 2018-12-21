@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
-import {Angular2TokenService} from "angular2-token";
+import { Router } from "@angular/router";
+import { AuthService } from "../../services/auth.service";
+import { Angular2TokenService } from "angular2-token";
 
 @Component({
   selector: 'app-header',
@@ -11,18 +11,12 @@ import {Angular2TokenService} from "angular2-token";
 })
 export class HeaderComponent implements OnInit {
 
-  @Output() featureSelected = new EventEmitter<string>();
-
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  onSelect(feature: string){
-      this.featureSelected.emit(feature);
-  }
-
-  logOut(){
+  logOut() {
     this.authService.logOutUser().subscribe(() => this.router.navigate(['/']))
   }
 

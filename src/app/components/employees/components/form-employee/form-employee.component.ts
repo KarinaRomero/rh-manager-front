@@ -28,6 +28,9 @@ export class FormEmployeeComponent implements OnInit {
         this.service.getEmployee(data.id).then(employee => {
           this.employee = employee;
           this.loadSkills();
+          /*this.service.getSkillsByEmployee(data.id).then(skills => {
+            this.skillsSelected = skills;
+          })*/
         })
       } else {
         this.loadSkills();
@@ -114,7 +117,8 @@ export class FormEmployeeComponent implements OnInit {
   }
 
   loadSkills(){
-    this.service.getAllSkills().then(skills => (this.skills = skills));
-          this.response = '';
+    this.service.getAllSkills().then(skills => (this.skills = skills)).then();
+    this.response = '';
+
   }
 }

@@ -1,9 +1,35 @@
-
-  <a class="btn btn-outline-success" (click)="setT()">{{ Change }}</a>
-  <div *ngIf="t">
-    <app-registry></app-registry>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 aling" >
+      <br/>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button
+          type="button"
+          (click)="setT(1)"
+          [disabled]="!isButtonActive"
+          class="btn btn-outline-prymary"
+        >
+          Login
+        </button>
+        <button
+          type="button"
+          (click)="setT(2)"
+          [disabled]="isButtonActive"
+          class="btn btn-outline-secondary"
+        >
+          Registro
+        </button>
+      </div>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-  <div *ngIf="!t">
-    <app-login></app-login>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div *ngIf="isButtonActive"><app-registry></app-registry></div>
+      <div *ngIf="!isButtonActive"><app-login></app-login></div>
+    </div>
+    <div class="col-sm-2"></div>
   </div>
-
+</div>

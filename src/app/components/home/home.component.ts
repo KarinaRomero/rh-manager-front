@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthGuard } from 'src/app/guards/auth.guard';
-import { Router } from '@angular/router';
-
-
+import { Component, OnInit } from '@angular/core'
+import { AuthGuard } from 'src/app/guards/auth.guard'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-home',
@@ -10,32 +8,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  t: boolean;
-  Change: string;
-  activate = false;
+  isButtonActive: boolean
+  activate = false
 
-
-  constructor(private authGuard:AuthGuard, public router: Router) {
-    this.t = false;
-    this.Change = 'Registar'
-    this.activate = this.authGuard.canActivate();
-    if(this.activate){
+  constructor(private authGuard: AuthGuard, public router: Router) {
+    this.isButtonActive = false
+    this.activate = this.authGuard.canActivate()
+    if (this.activate) {
       this.router.navigateByUrl('employees')
     }
   }
 
-  ngOnInit() {
-  }
-  setT(){
-    if(this.t == false)
-    {
-      this.t=true;
-      this.Change = 'Login'
-    } else {
-      this.Change = 'Registar'
-      this.t= false;
+  ngOnInit() {}
+  setT(active:Number) {
+    if(active === 1) {
+      this.isButtonActive = false;
     }
-
+    if(active === 2) {
+      this.isButtonActive = true;
+    }
   }
-
 }

@@ -16,15 +16,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item li-aling" *ngIf="(authService.userSignedIn$ | async)">
         <a routerLink="/employees" routerLinkActive="active">Empleados</a>
-        <!--
-          <a class="nav-link" href="#" (click)="onSelect('employees')">Empleados</a>
-        -->
       </li>
       <li class="nav-item li-aling" *ngIf="(authService.userSignedIn$ | async)">
         <a routerLink="/skills" routerLinkActive="active">Conocimientos</a>
-        <!--
-          <a class="nav-link" href="#" (click)="onSelect('skills')">Conocimientos</a>
-        -->
       </li>
     </ul>
     <div class="user-name" *ngIf="(authService.userSignedIn$ | async)">

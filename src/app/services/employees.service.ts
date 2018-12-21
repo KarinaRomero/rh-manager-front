@@ -7,6 +7,7 @@ import { Angular2TokenService } from 'angular2-token'
 export class EmployeeService {
   private apiSkillsUrl = 'api/v1/skills'
   private apiEmployeesUrl = 'api/v1/employees/'
+  private apiAssignametsUrl = 'api/v1/assignments'
 
   constructor(public authService: Angular2TokenService) {}
 
@@ -90,6 +91,15 @@ export class EmployeeService {
       .then(response => JSON.parse(response['_body']) as Skill[])
       .catch(this.handleError)
   }
+
+  getSkillsByEmployee(id:any): Promise<Skill[]>{
+    return this.authService
+      .get(this.apiSkillsUrl+'/'+id+'/edit')
+      .toPromise()
+      .then(response => JSON.parse(response['_body']) as Skill[])
+      .catch(this.handleError)
+  }
+
 
   private handleError(error: any): any {
     console.error('An error occurred', error)
