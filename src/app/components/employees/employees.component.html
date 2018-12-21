@@ -7,7 +7,7 @@
   <div class="row content">
     <div class="col-sm-8"></div>
     <div class="col-sm-4">
-      <button class='btn btn-success btn-aling' routerLink="/employees-add">Registar empleado</button>
+      <button class='btn btn-success btn-aling' routerLink="/employees-new">Registar empleado</button>
     </div>
   </div>
 </div>
@@ -30,7 +30,7 @@
       <tbody class="ContentTableEmpleado">
         <tr *ngFor="let employee of employees">
           <td style="text-align: center">{{employee.id}}</td>
-          <td style="text-align: center">{{employee.id_employee}}</td>
+          <td style="text-align: center">{{employee.key}}</td>
           <td style="text-align: center">{{employee.name}}</td>
           <td style="text-align: center">{{employee.age}}</td>
           <td style="text-align: center">{{employee.job}}</td>

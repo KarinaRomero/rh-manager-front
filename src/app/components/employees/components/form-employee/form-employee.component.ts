@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
-import {EmployeeService} from '../services/employees.service';
+import { EmployeeService } from '../../../../services/employees.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { Skill } from 'src/app/models/skill';
 
 @Component({
   selector: 'app-form-employee',
@@ -11,11 +9,15 @@ import { Skill } from 'src/app/models/skill';
   styleUrls: ['./form-employee.component.css']
 })
 export class FormEmployeeComponent implements OnInit {
-  public employee = new Employee();
-  public response: any;
-  public skills: Skill[];
-  public skillsSelected: string[];
-  selectedOption: Skill;
+
+  employee = new Employee();
+  response: any;
+
+  skillSelected = 0;
+  skillsSelected = [];
+  skills = [];
+  names =[];
+
   constructor(
     private service: EmployeeService,
     public route: ActivatedRoute,
@@ -23,15 +25,14 @@ export class FormEmployeeComponent implements OnInit {
   ) {
     this.route.params.subscribe((data: any) => {
       if (data && data.id) {
-        console.log('print data' + data.id)
-        this.service.getEmployee(data.id).then(employee => (this.employee = employee))
+        this.service.getEmployee(data.id).then(employee => {
+          this.employee = employee;
+          this.loadSkills();
+        })
       } else {
-        this.employee = new Employee()
+        this.loadSkills();
       }
     })
-    this.service.getAllSkills().then(skills => (this.skills = skills));
-    this.response = ''
-    this.skillsSelected = new Array(4);
   }
 
   ngOnInit() {}
@@ -39,22 +40,81 @@ export class FormEmployeeComponent implements OnInit {
   public onSubmit() {
     console.log('Adding a employee: ' + this.employee.name)
     if (this.employee.id) {
-      this.service
-        .update(this.employee)
-        .then(response => (this.response = response))
-      this.employee = new Employee()
-      alert('Exito al editar')
-      this.router.navigateByUrl('employees')
+      this.updateEmployee();
     } else {
-      this.service
-        .create(this.employee)
-        .then(response => (this.response = response))
-      this.employee = new Employee()
-      alert(this.response)
+      this.createEmployee();
     }
   }
-  add(){
-    console.log("My input: ", this.selectedOption);
-    //this.skillsSelected.push(this.selectedOption);
+
+  chageSkill(e: any) {
+    let temp = Number(e.value);
+    if ( temp > 0) {
+      this.skillSelected = temp;
+    } else {
+      this.skillSelected = 0;
+    }
+  }
+
+  addSkills() {
+    if (this.skillSelected && !this.skillsSelected.includes(this.skillSelected)) {
+      this.skillsSelected.push(this.skillSelected);
+      this.updateNames();
+    } else {
+      alert('Ya se ha asignado este conocimiento!')
+    }
+  }
+  clearData() {
+    this.employee = new Employee();
+    this.skillSelected = 0;
+    this.skillsSelected = [];
+    this.names = [];
+  }
+
+  deleteSkills(name:any) {
+    console.log(name);
+    if(this.names.includes(name)){
+      this.skills.forEach(skill => {
+        if (!(skill.name).localeCompare(name)){
+
+          let indexNames = this.names.indexOf(skill.name);
+          let indexSelected = this.skillsSelected.indexOf(skill.id);
+
+          this.names.splice(indexNames, 1);
+          this.skillsSelected.splice(indexSelected, 1);
+        }
+      });
+    }
+  }
+
+  updateNames() {
+    this.skills.forEach(skill =>{
+      if(this.skillsSelected.includes(skill.id) && !this.names.includes(skill.name)){
+        this.names.push(skill.name);
+      }
+    })
+  }
+
+  updateEmployee() {
+    this.employee.skill_ids = this.skillsSelected;
+    this.service
+      .update(this.employee)
+      .then(response => (this.response = response))
+    this.clearData();
+    alert(this.response)
+    this.router.navigateByUrl('employees')
+  }
+
+  createEmployee() {
+    this.employee.skill_ids = this.skillsSelected;
+    this.service
+      .create(this.employee)
+      .then(response => (this.response = response))
+    this.clearData();
+    alert(this.response)
+  }
+
+  loadSkills(){
+    this.service.getAllSkills().then(skills => (this.skills = skills));
+          this.response = '';
   }
 }

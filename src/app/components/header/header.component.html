@@ -1,20 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><h4>Empresa</h4></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+    <a *ngIf="!(authService.userSignedIn$ | async)" [routerLink]="['']" id="logo-container" class="brand-logo">Bienvenido</a>
+  <a class="navbar-brand" href="/" *ngIf="(authService.userSignedIn$ | async)"><h4>Empresa</h4></a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item li-aling">
+      <li class="nav-item li-aling" *ngIf="(authService.userSignedIn$ | async)">
         <a routerLink="/employees" routerLinkActive="active">Empleados</a>
-        <!--<a class="nav-link" href="#" (click)="onSelect('employees')">Empleados</a>-->
+        <!--
+          <a class="nav-link" href="#" (click)="onSelect('employees')">Empleados</a>
+        -->
       </li>
-      <li class="nav-item li-aling">
+      <li class="nav-item li-aling" *ngIf="(authService.userSignedIn$ | async)">
         <a routerLink="/skills" routerLinkActive="active">Conocimientos</a>
-        <!--<a class="nav-link" href="#" (click)="onSelect('skills')">Conocimientos</a>-->
+        <!--
+          <a class="nav-link" href="#" (click)="onSelect('skills')">Conocimientos</a>
+        -->
       </li>
     </ul>
-    <div class="user-name"><h4>Nombre</h4></div>
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Cerrar sesión</button>
+    <div class="user-name" *ngIf="(authService.userSignedIn$ | async)">
+      <h4>{{ authService.userSignedIn$ }}</h4>
+    </div>
+    <button *ngIf="(authService.userSignedIn$ | async)"
+      class="btn btn-outline-light my-2 my-sm-0"
+      type="submit"
+      (click)="logOut()"
+    >
+      Cerrar sesión
+    </button>
   </div>
 </nav>

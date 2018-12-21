@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Skill } from 'src/app/models/skill';
-import {SkillService} from '../services/skills.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EmployeeService } from '../../../services/employees.service';
 
 @Component({
   selector: 'app-skills-detail',
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SkillsDetailComponent implements OnInit {
   public skill = new Skill();
   public response :any;
-  constructor(private service: SkillService , public route : ActivatedRoute, public router : Router) {
+  constructor(private service: EmployeeService, public route : ActivatedRoute, public router : Router) {
     this.route.params.subscribe((data : any)=>{
       if(data && data.id){
         console.log("print data" + data.id);
@@ -32,12 +32,12 @@ export class SkillsDetailComponent implements OnInit {
   public onSubmit() {
     console.log("Adding a skill: " + this.skill.name);
     if(this.skill.id) {
-      this.service.update(this.skill).then(response => this.response = response);
+      this.service.updateSkill(this.skill).then(response => this.response = response);
       this.skill = new Skill();
       alert('Exito al editar');
       this.router.navigateByUrl('skills');
     } else {
-      this.service.create(this.skill.name).then(response => this.response = response);
+      this.service.createSkill(this.skill.name).then(response => this.response = response);
       this.skill = new Skill();
       alert(this.response);
     }

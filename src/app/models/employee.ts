@@ -1,18 +1,20 @@
 export class Employee {
     id: number;
-    id_employee: string;
+    key: string;
     name: string;
     age: number;
     job: string;
     adress: string;
+    skill_ids: any[];
 
     Employee()
     {
         this.id = 0;
-        this.id_employee = '';
+        this.key = '';
         this.name = '';
         this.age = 0;
         this.job = '';
         this.adress = '';
+        this.skill_ids =[];
     }
 }

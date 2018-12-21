@@ -1,0 +1,195 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8 bg">
+        <h3>Registrar</h3>
+        <hr />
+        <form (ngSubmit)="onSubmit()" #employeesForm="ngForm">
+          <div class="form-group">
+            <label for="inputRFC">RFC</label>
+            <input
+              type="text"
+              class="form-control"
+              id="rfc"
+              placeholder="1234PKÑ"
+              [(ngModel)]="userLogin.rfc"
+              name="rfc"
+              #rfc="ngModel"
+              minlength="13"
+              maxlength="14"
+              [pattern]="confirmation"
+              [ngClass]="{
+                'validate-input': rfc.invalid && (rfc.dirty || rfc.touched)
+              }"
+              required
+            />
+            <div *ngIf="rfc.invalid && (rfc.dirty || rfc.touched)">
+                <div class="validate-text" *ngIf="rfc.errors.required">
+                    RFC es requerido.
+                  </div>
+                <div class="validate-text" *ngIf="rfc.errors.minlength">
+                    RFC debe tener almenos 13 caracteres.
+                  </div>
+                  <div class="validate-text" *ngIf="rfc.errors.maxlength">
+                      RFC debe tener menos de 14 caracteres.
+                    </div>
+                    <div class="validate-text" *ngIf="rfc.errors.invalid">
+                        RFC debe tener una estructura correcta.
+                      </div>
+              </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <label for="inputName">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Erika Maria Muñoz Rueda"
+                [(ngModel)]="userLogin.name"
+                name="name"
+                required
+                maxlength="45"
+                #name="ngModel"
+                [ngClass]="{
+                  'validate-input': name.invalid && (name.dirty || name.touched)
+                }"
+              />
+              <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                  <div class="validate-text" *ngIf="name.errors.required">
+                      Nombre es requerido.
+                    </div>
+                  <div class="validate-text" *ngIf="name.errors.minlength">
+                      Nombre debe tener almenos 6 caracteres.
+                    </div>
+                    <div class="validate-text" *ngIf="name.errors.maxlength">
+                        Nombre debe tener menos de 45caracteres.
+                      </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputCompany">Compañia</label>
+              <input
+                type="text"
+                class="form-control"
+                id="company"
+                placeholder="Example S.A"
+                [(ngModel)]="userLogin.company"
+                name="company"
+                required
+                #company="ngModel"
+                [ngClass]="{
+                  'validate-input': company.invalid && (company.dirty || company.touched)
+                }"
+              />
+              <div *ngIf="company.invalid && (company.dirty || company.touched)">
+                  <div class="validate-text" *ngIf="company.errors.required">
+                      Compañía es requerido.
+                    </div>
+                    <div class="validate-text" *ngIf="company.errors.maxlength">
+                        Compañía debe tener menos de 45caracteres.
+                      </div>
+                </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="example@mail.com"
+            [(ngModel)]="userLogin.email"
+            name="email"
+            #email="ngModel"
+            [ngClass]="{
+              'validate-input': email.invalid && (email.dirty || email.touched)
+            }"
+            required
+            email
+          />
+          <div *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div class="validate-text" *ngIf="email.errors.required">
+              Email es requerido.
+            </div>
+            <div class="validate-text" *ngIf="email.errors.email">
+              Email debe ser una dirección de correo válida.
+            </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Contraseña</label>
+            <input
+            appComparePassword="passwordConfirmation" parent='true'
+            id="password"
+            type="password"
+            class="form-control"
+            placeholder="*********"
+            [(ngModel)]="userLogin.password"
+            name="password"
+            required
+            #password="ngModel"
+            minlength="8"
+            maxlength="8"
+            [ngClass]="{
+              'validate-input': password.invalid && (password.dirty || password.touched)
+            }"
+          />
+          <div *ngIf="password.invalid && (password.dirty || password.touched)">
+              <div class="validate-text" *ngIf="password.errors.required">
+                Password es requerido.
+              </div>
+              <div class="validate-text" *ngIf="password.errors.minlength">
+                Password debe tener  8 caracteres.
+              </div>
+              <div class="validate-text" *ngIf="password.errors.maxlength">
+                  Password debe tener  8 caracteres.
+                </div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="inputPasswordC">Confirmar Contraseña</label>
+              <input
+              appComparePassword="password" parent='false'
+            id="passwordConfirmation"
+            type="password"
+            class="form-control"
+            placeholder="*********"
+            [(ngModel)]="userLogin.passwordConfirmation"
+            name="passwordConfirmation"
+            required
+            #passwordConfirmation="ngModel"
+            minlength="8"
+            maxlength="15"
+            [ngClass]="{
+              'validate-input': passwordConfirmation.invalid && (passwordConfirmation.dirty || passwordConfirmation.touched)
+            }"
+          />
+          <div *ngIf="passwordConfirmation.invalid && (passwordConfirmation.dirty || passwordConfirmation.touched)">
+              <div class="validate-text" *ngIf="passwordConfirmation.errors.required">
+                Password es requerido.
+              </div>
+              <div class="validate-text" *ngIf="passwordConfirmation.errors.minlength">
+                Password debe tener almenos 8 caracteres.
+              </div>
+              <div class="validate-text" *ngIf="passwordConfirmation.errors.maxlength">
+                  Password debe tener menos de 15 caracteres.
+                </div>
+                <div *ngIf="passwordConfirmation.errors.compare && !passwordConfirmation.errors.required">Password Mismatch.</div>
+            </div>
+            </div>
+          <button type="submit" class="btn btn-primary btn-aling ">
+            Agregar
+          </button>
+          <button
+            type="submit"
+            class="btn btn-secondary btn-aling "
+            routerLink="/employees"
+          >
+            Cancelar
+          </button>
+        </form>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>

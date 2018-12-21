@@ -2,37 +2,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { Angular2TokenService } from 'angular2-token';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-
 import { AppRoutingModule } from './app-routing.module';
-import { SkillsModule } from './components/skills/skills.module';
 
-import { EmployeeService } from './components/employees/components/services/employees.service';
-
-import { FormsModule } from '@angular/forms';
-import { LoginModule } from './components/login/login.module';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { EmployeeService } from './services/employees.service';
+import { ComparePasswordDirective } from './directives/compare-password.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
+    ComparePasswordDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SkillsModule,
     FormsModule,
     HttpClientModule,
-    LoginModule
+    HttpModule,
   ],
   exports:[FormsModule],
   providers: [
-    EmployeeService
+    EmployeeService,
+    Angular2TokenService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
