@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { filter } from 'rxjs/operators';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -10,11 +12,16 @@ import { filter } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   t: boolean;
   Change: string;
+  activate = false;
 
 
-  constructor() {
+  constructor(private authGuard:AuthGuard, public router: Router) {
     this.t = false;
     this.Change = 'Registar'
+    this.activate = this.authGuard.canActivate();
+    if(this.activate){
+      this.router.navigateByUrl('employees')
+    }
   }
 
   ngOnInit() {

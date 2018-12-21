@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       res => {
         if (res.status == 200) {
           this.onFormResult.emit({ signedIn: true, res })
+            this.router.navigateByUrl('employees')
         }
       },
       err => {
