@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
       err => {
         console.log('err:', err)
         this.onFormResult.emit({ signedIn: false, err })
+        alert('Aun no estas registrado!')
       }
     )
   }
