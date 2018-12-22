@@ -22,7 +22,7 @@
       </li>
     </ul>
     <div class="user-name" *ngIf="(authService.userSignedIn$ | async)">
-      <h4>{{ authService.authService.currentUserData.name }}</h4>
+      <h4>{{ getUserName() }}</h4>
     </div>
     <button *ngIf="(authService.userSignedIn$ | async)"
       class="btn btn-outline-light my-2 my-sm-0"
