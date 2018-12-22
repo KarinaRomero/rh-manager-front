@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="container">
-  <div class="table-responsive-sm">
+  <div class="table-responsive">
     <table class="table">
       <thead class="active">
         <tr class="active">
@@ -35,7 +35,7 @@
           <td style="text-align: center">{{employee.age}}</td>
           <td style="text-align: center">{{employee.job}}</td>
           <td style="text-align: center">{{employee.adress}}</td>
-          <td style="text-align: center">2</td>
+          <td style="text-align: center">{{employee.skills.length}}</td>
           <td style="text-align: center">
             <button class="btn btn-link" (click)="update(employee['id'])">Editar</button>
           </td>

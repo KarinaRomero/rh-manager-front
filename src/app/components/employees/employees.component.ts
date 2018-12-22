@@ -10,7 +10,7 @@ import { EmployeeService } from '../../services/employees.service';
 })
 export class EmployeesComponent implements OnInit {
 
-  employees: Employee[]
+  employees: any[]
 
   constructor(private service: EmployeeService, public router: Router) { }
 
@@ -19,7 +19,9 @@ export class EmployeesComponent implements OnInit {
   }
 
   getAllEmployees() {
-    this.service.getAllEmployees().then(employees => (this.employees = employees));
+    this.service.getAllEmployees().then(employees => {
+      this.employees = employees;
+    });
   }
 
   public update(id: string) {

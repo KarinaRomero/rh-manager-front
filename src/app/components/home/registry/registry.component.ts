@@ -30,8 +30,8 @@ export class RegistryComponent implements OnInit {
         }
       },
       err => {
-        console.log(err.json())
         this.onFormResult.emit({ signedUp: false, err })
+        alert('El RFC o el correo ya estan registrados'+JSON.parse(err['_body']).errors[0] as any);
       }
     )
   }
