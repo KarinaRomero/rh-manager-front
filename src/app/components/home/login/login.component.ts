@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     this.authService.logInUser(this.userLogin).subscribe(
       res => {
         if (res.status == 200) {
+          this.authService.name = this.authService.authService.currentUserData.name;
           this.onFormResult.emit({ signedIn: true, res })
             this.router.navigateByUrl('employees')
         }

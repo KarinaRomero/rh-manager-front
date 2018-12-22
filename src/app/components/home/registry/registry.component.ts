@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core'
 import { AuthService } from 'src/app/services/auth.service'
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-registry',
@@ -19,7 +20,7 @@ export class RegistryComponent implements OnInit {
     passwordConfirmation: ''
   }
 
-  constructor(private authSerivce: AuthService) {}
+  constructor(private authSerivce: AuthService, private router: Router) { }
 
   ngOnInit() {}
   onSubmit() {
@@ -27,6 +28,8 @@ export class RegistryComponent implements OnInit {
       res => {
         if (res.status === 200) {
           this.onFormResult.emit({ signedUp: true, res })
+          this.authSerivce.name = this.userLogin.name;
+          this.router.navigate(['/employees'])
         }
       },
       err => {

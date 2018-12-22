@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   userSignedIn$:Subject<boolean> = new Subject();
+  name = '';
 
   constructor(public authService:Angular2TokenService) {
 

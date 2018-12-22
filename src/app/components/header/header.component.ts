@@ -20,15 +20,4 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.authService.logOutUser().subscribe(() => this.router.navigate(['/']))
   }
-
-  getUserName()
-  {
-    if(this.authService.authService.currentUserData.name)
-    {
-        return this.authService.authService.currentUserData.name
-    }
-
-    return '';
-  }
-
 }
